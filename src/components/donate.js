@@ -9,20 +9,6 @@ function Donate() {
     const [message, setMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState({ status: false, msg: "" });
 
-    const handleMobile = (e, val) => {
-        var tdr_regex = /((09|03|07|08|05)+([0-9]{8})b)/g;
-
-        if (val !== '') {
-            if (tdr_regex.test(val) === false) {
-                alert('Your phone number ' + val + ' is not in the correct format!');
-            } else {
-                alert('Your phone number ' + val + ' is valid!');
-            }
-        } else {
-            alert('You have not entered your phone number!');
-        }
-    }
-
     const handleSubmit = async (e) => {
         setErrorMessage({ status: false, msg: '' });
         e.preventDefault();

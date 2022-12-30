@@ -416,6 +416,16 @@ header .nav-col .navbar-nav li {
     bottom: 30px;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .slider-detail .carousel-caption {
+    bottom: 30px;
+    display: block !important;
+    position: initial;
+    color: #000;
+    padding: 20px;
+  }
+}
 @media screen and (max-width: 1057px) {
   .slider-detail .carousel-caption {
     bottom: 10px;
@@ -546,6 +556,9 @@ footer .content-ro .footer-contact .address-row .icon {
 }
 footer .content-ro .footer-contact .address-row .detail p {
   font-weight: 300;
+}
+footer .content-ro .footer-contact .address-row .detail p a {
+  color: #fff;
 }
 footer .content-ro .footer-links ul {
   margin-bottom: 15px;

@@ -5,29 +5,50 @@ import axios from "axios";
 function Footer() {
     const [name, setName] = useState("");
     const [mobile, setMobile] = useState("");
+    const [age, setAge] = useState("");
     const [slots, setSlots] = useState("");
     const [message, setMessage] = useState("");
-    const [formSubmitted, setFormSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState({ status: false, msg: "" });
 
     const handleSubmit = async (e) => {
+        setErrorMessage({ status: false, msg: '' });
         e.preventDefault();
+        var mobile_regex = /^[0-9]{10}$/g;
+
+        if (mobile !== '') {
+            if (mobile_regex.test(mobile) === false) {
+                setErrorMessage({ status: false, msg: 'Your phone number ' + mobile + ' is not in the correct format!' });
+                return false;
+            }
+        } else {
+            setErrorMessage({ status: false, msg: 'You have not entered your phone number!' });
+            return false;
+        }
+
+        if (typeof age === 'number') {
+            if (age < 18) {
+                setErrorMessage({ status: false, msg: 'Below 18 age are not allowed to donate blood.' });
+                return false;
+            }
+        } else {
+            setErrorMessage({ status: false, msg: 'Please enter valid age.' });
+            return false;
+        }
 
         let payload = {
             name: name,
             mobile: mobile,
             slots: slots,
+            age: age,
             message: message
         }
 
-        let res = await axios.post("https://my-json-server.typicode.com/radhakishan404/donatebloodapi/user", payload);
+        let res = await axios.post("http://13.233.153.255:3001/users", payload);
+        console.log(res, "res");
         if (res.status === 201) {
-            setFormSubmitted(true);
-            setName("");
-            setMobile("");
-            setSlots("");
-            setMessage("");
+            setErrorMessage({ status: true, msg: "Your details submitted successfully." });
         } else {
-            alert("Something went wrong");
+            setErrorMessage({ status: false, msg: "Your details submitted successfully." });
         }
     }
 
@@ -51,7 +72,7 @@ function Footer() {
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="detail">
-                                <p>Kashish Gupta <br />+91 7045988319</p>
+                                <p>Kashish Gupta <br /><a href="tel:+917045988319">+91 7045988319</a></p>
                             </div>
                         </div>
                         <div class="address-row">
@@ -59,13 +80,13 @@ function Footer() {
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="detail">
-                                <p>Yash Kothari <br />+91 9769403162</p>
+                                <p>Yash Kothari <br /><a href="tel:+919769403162">+91 9769403162</a></p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 footer-links">
                         <div class="row no-margin mt-2">
-                        <iframe src="//maps.google.com/maps?q=19.315735, 72.855931&z=15&output=embed"></iframe>
+                            <iframe src="//maps.google.com/maps?q=19.315735, 72.855931&z=15&output=embed"></iframe>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 footer-form">
@@ -74,15 +95,15 @@ function Footer() {
                                 <h4>Quickly Add Your Details here...</h4>
                             </div>
                             {
-                                formSubmitted
+                                errorMessage.msg !== ""
                                     ?
                                     <div className="form-title">
                                         <h4 style={{
                                             padding: 2,
                                             color: "#fff",
-                                            backgroundColor: "#28a745",
-                                            borderColor: "#28a745"
-                                        }}>Your details submitted successfully.</h4>
+                                            backgroundColor: errorMessage.status ? "#28a745" : "#de1f26",
+                                            borderColor: errorMessage.status ? "#28a745" : "#de1f26"
+                                        }}>{errorMessage.msg}</h4>
                                     </div>
                                     :
                                     null
@@ -90,7 +111,7 @@ function Footer() {
                             <div class="form-body">
                                 <form onSubmit={(e) => handleSubmit(e)}>
                                     <input type="text" onChange={(e) => setName(e.target.value)} defaultValue={name} required placeholder="Enter Name" class="form-control" />
-                                    <input type="text" onChange={(e) => setMobile(e.target.value)} defaultValue={mobile} required placeholder="Enter Mobile no" class="form-control" />
+                                    <input type="text" minLength={10} maxLength={10} onChange={(e) => setMobile(e.target.value)} defaultValue={mobile} required placeholder="Enter Mobile no" class="form-control" />
                                     <select class="form-control" onChange={(e) => setSlots(e.target.value)} value={slots} >
                                         <option value="">Select your free slots</option>
                                         <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
@@ -104,6 +125,7 @@ function Footer() {
                                         <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
                                         <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
                                     </select>
+                                    <input type="text" minLength={2} maxLength={2} onChange={(e) => setAge(parseInt(e.target.value))} defaultValue={age} required placeholder="Enter your age" class="form-control" />
                                     <textarea defaultValue={message} onChange={(e) => setMessage(e.target.value)} placeholder="Any important message or question you want to ask..." class="form-control" ></textarea>
                                     <button type="submit" class="btn btn-sm btn-primary w-100">Send Your Details</button>
                                 </form>

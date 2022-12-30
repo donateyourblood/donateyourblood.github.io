@@ -32,6 +32,15 @@ function Gallery() {
                         <div className="gg-element">
                             <img src="assets/images/gallery/g7.jpeg" alt="" />
                         </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/g16.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/g17.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/21-01.jpeg" alt="" />
+                        </div>
                     </div>
                     <div className="row session-title">
                         <h2>Year 2021</h2>
@@ -60,6 +69,24 @@ function Gallery() {
                         </div>
                         <div className="gg-element">
                             <img src="assets/images/gallery/g15.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/22-01.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/22-02.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/22-03.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/22-04.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/22-05.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
+                            <img src="assets/images/gallery/22-06.jpeg" alt="" />
                         </div>
                     </div>
                 </div>
