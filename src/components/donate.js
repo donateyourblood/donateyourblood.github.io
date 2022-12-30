@@ -56,7 +56,7 @@ function Donate() {
             message: message
         }
 
-        let res = await axios.post("http://localhost:3001/users", payload);
+        let res = await axios.post("http://13.233.153.255:3001/users", payload);
         console.log(res, "res");
         if (res.status === 201) {
             setErrorMessage({ status: true, msg: "Your details submitted successfully." });
