@@ -10,7 +10,7 @@ import UsersPage from "./pages/UsersPage.js";
 
 function App() {
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Routes>
                 <Route exact path="/" element={<HomePage />} />
                 <Route exact path="/all-users" element={<UsersPage />} />

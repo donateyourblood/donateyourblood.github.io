@@ -16,11 +16,11 @@ function UsersPage() {
         age: "",
         slots: "",
         message: "",
-        status: "applicable"
+        status: "pending"
     });
 
     const loadData = async () => {
-        let res = await axios.get("http://localhost:3001/users");
+        let res = await axios.get(`${BASE_URL}/users`);
 
         if (res.status === 200 && res?.data?.data) {
             setTableData(res.data.data?.users);
@@ -46,7 +46,7 @@ function UsersPage() {
             age: "",
             slots: "",
             message: "",
-            status: "applicable"
+            status: "pending"
         });
         setShowModal(false);
     }
@@ -116,7 +116,7 @@ function UsersPage() {
                                         ?
                                         tableData.map(function (row, key) {
                                             return (
-                                                <tr key={key} className={row.status === "not applicable" ? "redbg" : ""}>
+                                                <tr key={key} className={row.status === "not applicable" ? "redbg" : row.status === "applicable" ? "greenbg" : ""}>
                                                     <td>{key + 1}</td>
                                                     <td>
                                                         <p>Name: <span>{row.name}</span></p>
@@ -169,15 +169,15 @@ function UsersPage() {
                                             }
                                             <div className="form-group">
                                                 <label>Name</label>
-                                                <input type="text" onChange={(e) => setUserData({ ...userData, name: e.target.value })} value={userData.name} required placeholder="Enter Name" className="form-control" />
+                                                <input type="text" disabled={isEdit ? true : false} onChange={(e) => setUserData({ ...userData, name: e.target.value })} value={userData.name} required placeholder="Enter Name" className="form-control" />
                                             </div>
                                             <div className="form-group">
                                                 <label>Mobile</label>
-                                                <input type="text" minLength={10} maxLength={10} onChange={(e) => setUserData({ ...userData, mobile: e.target.value })} value={userData.mobile} required placeholder="Enter Mobile no" className="form-control" />
+                                                <input type="text" disabled={isEdit ? true : false} minLength={10} maxLength={10} onChange={(e) => setUserData({ ...userData, mobile: e.target.value })} value={userData.mobile} required placeholder="Enter Mobile no" className="form-control" />
                                             </div>
                                             <div className="form-group">
                                                 <label>Slots</label>
-                                                <select className="form-control" onChange={(e) => setUserData({ ...userData, slots: e.target.value })} value={userData.slots}  >
+                                                <select className="form-control" disabled={isEdit ? true : false} onChange={(e) => setUserData({ ...userData, slots: e.target.value })} value={userData.slots}  >
                                                     <option value="">Select your free slots</option>
                                                     <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
                                                     <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
@@ -189,11 +189,12 @@ function UsersPage() {
                                             </div>
                                             <div className="form-group">
                                                 <label>Age</label>
-                                                <input type="text" minLength={2} maxLength={2} onChange={(e) => setUserData({ ...userData, age: e.target.value })} value={userData.age} required placeholder="Enter your age" className="form-control" />
+                                                <input type="text" disabled={isEdit ? true : false} minLength={2} maxLength={2} onChange={(e) => setUserData({ ...userData, age: e.target.value })} value={userData.age} required placeholder="Enter your age" className="form-control" />
                                             </div>
                                             <div className="form-group">
                                                 <label>Status</label>
                                                 <select className="form-control" onChange={(e) => setUserData({ ...userData, status: e.target.value })} value={userData.status}>
+                                                    <option value={"pending"}>Pending</option>
                                                     <option value={"applicable"}>Applicable</option>
                                                     <option value={"not applicable"}>Not Applicable</option>
                                                 </select>
