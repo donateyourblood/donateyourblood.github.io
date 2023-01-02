@@ -24,7 +24,7 @@ function Donate() {
             return false;
         }
 
-        if (typeof age === 'number') {
+        if (age && typeof age === 'number') {
             if (age < 18) {
                 setErrorMessage({ status: false, msg: 'Below 18 age are not allowed to donate blood.' });
                 return false;
@@ -42,8 +42,8 @@ function Donate() {
             message: message
         }
 
-        let res = await axios.post("http://13.233.153.255:3001/users", payload);
-        console.log(res, "res");
+        let res = await axios.post("https://api.radhakishanjangidserver.shop/users", payload);
+        
         if (res.status === 201) {
             setErrorMessage({ status: true, msg: "Your details submitted successfully." });
         } else {

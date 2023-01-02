@@ -10,12 +10,13 @@ function Slider() {
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img className="d-block w-100" src="assets/images/slider/slide-02.png" alt="First slide" />
+                        <img className="d-block w-100" src="assets/images/slider/slide-01.png" alt="First slide" />
                         <div className="carousel-caption d-none d-md-block">
                             <h5 className=" bounceInDown">Donate Blood & Save a Life</h5>
-                            <p className=" bounceInLeft">Lets all come together and give back to our community, <br /> 
-                            Blood donation is important in life, it gives others a hope to survive.<br />
-                            It takes just 5-7 minutes to <span className="red"><strong>SAVE A LIFE</strong></span> by donating your blood.
+                            <p className=" bounceInLeft">
+                                Lets all come together and give back to our community, <br />
+                                Blood donation is important in life, it gives others a hope to survive.<br />
+                                It takes just 5-7 minutes to <span className="red"><strong>SAVE A LIFE</strong></span> by donating your blood.
                             </p>
                             <div className=" vbh">
                                 <a href="#donate"><div className="btn btn-success bounceInUp"> Donate Now </div></a>
@@ -24,13 +25,13 @@ function Slider() {
                     </div>
 
                     <div className="carousel-item">
-                        <img className="d-block w-100" src="assets/images/Team Bloodium.png" alt="Third slide" />
+                        <img className="d-block w-100" src="assets/images/slider/slider-02.png" alt="Third slide" />
                         <div className="carousel-caption vdg-cur d-none d-md-block">
                             <h5 className=" bounceInDown">Donate Blood & Save a Life</h5>
                             <p className=" bounceInLeft">
-                                Blood donation drive in <span className="red"><strong>Old Raviraj Complex</strong></span> in colloboration with <br />
-                                Mahatma Gandhi Seva Mandir Blood Bank on the
-                                <br /><span className="red"><strong>22nd of Jan, 2023</strong></span> Do join us to CREATE A CHANGE by donating your blood
+                                Blood donation drive in <span className="red"><strong>Old Raviraj Complex, Jesal Park</strong></span>  <br />
+                                in colloboration with Mahatma Gandhi Seva Mandir Blood Bank on the<br />
+                                <span className="red"><strong>22nd of Jan, 2023</strong></span> Do join us to CREATE A CHANGE by donating your blood
                             </p>
 
                             <div className=" vbh">

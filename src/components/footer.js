@@ -25,7 +25,7 @@ function Footer() {
             return false;
         }
 
-        if (typeof age === 'number') {
+        if (age && typeof age === 'number') {
             if (age < 18) {
                 setErrorMessage({ status: false, msg: 'Below 18 age are not allowed to donate blood.' });
                 return false;
@@ -43,7 +43,7 @@ function Footer() {
             message: message
         }
 
-        let res = await axios.post("http://13.233.153.255:3001/users", payload);
+        let res = await axios.post("https://api.radhakishanjangidserver.shop/users", payload);
         console.log(res, "res");
         if (res.status === 201) {
             setErrorMessage({ status: true, msg: "Your details submitted successfully." });
@@ -58,7 +58,7 @@ function Footer() {
 
                 <div class="row content-ro">
                     <div class="col-lg-4 col-md-12 footer-contact">
-                        <h2>Contact Informatins</h2>
+                        <h2>Contact Information</h2>
                         <div class="address-row">
                             <div class="icon">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -111,21 +111,17 @@ function Footer() {
                             <div class="form-body">
                                 <form onSubmit={(e) => handleSubmit(e)}>
                                     <input type="text" onChange={(e) => setName(e.target.value)} defaultValue={name} required placeholder="Enter Name" class="form-control" />
-                                    <input type="text" minLength={10} maxLength={10} onChange={(e) => setMobile(e.target.value)} defaultValue={mobile} required placeholder="Enter Mobile no" class="form-control" />
+                                    <input type="number" minLength={10} maxLength={10} onChange={(e) => setMobile(e.target.value)} defaultValue={mobile} required placeholder="Enter Mobile no" class="form-control" />
                                     <select class="form-control" onChange={(e) => setSlots(e.target.value)} value={slots} >
                                         <option value="">Select your free slots</option>
                                         <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
                                         <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
                                         <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
-                                        <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
                                         <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
                                         <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
                                         <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
-                                        <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
-                                        <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
-                                        <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
                                     </select>
-                                    <input type="text" minLength={2} maxLength={2} onChange={(e) => setAge(parseInt(e.target.value))} defaultValue={age} required placeholder="Enter your age" class="form-control" />
+                                    <input type="number" minLength={2} maxLength={2} onChange={(e) => setAge(parseInt(e.target.value))} defaultValue={age} required placeholder="Enter your age" class="form-control" />
                                     <textarea defaultValue={message} onChange={(e) => setMessage(e.target.value)} placeholder="Any important message or question you want to ask..." class="form-control" ></textarea>
                                     <button type="submit" class="btn btn-sm btn-primary w-100">Send Your Details</button>
                                 </form>

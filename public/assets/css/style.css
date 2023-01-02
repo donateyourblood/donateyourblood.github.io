@@ -401,6 +401,7 @@ header .nav-col .navbar-nav li {
 .slider-detail .vbh .btn {
   padding: 10px;
   margin-top: 40px;
+  margin-bottom: 40px;
   width: 200px;
   margin-right: 10px;
   font-weight: 600;
@@ -438,7 +439,8 @@ header .nav-col .navbar-nav li {
 }
 @media screen and (max-width: 927px) {
   .slider-detail .carousel-caption h5 {
-    font-size: 22px;
+    font-size: 32px;
+    padding-top: 15px;
   }
 }
 @media screen and (max-width: 1057px) {
@@ -448,7 +450,8 @@ header .nav-col .navbar-nav li {
 }
 @media screen and (max-width: 927px) {
   .slider-detail .carousel-caption p {
-    font-size: 13px;
+    font-size: 18px;
+    padding-top: 15px;
   }
 }
 /* ===================================== Donation Process CSS ================================== */
@@ -496,12 +499,12 @@ header .nav-col .navbar-nav li {
 }
 /* ===================================== About US CSS ================================== */
 .about-us {
-  padding: 50px;
+  padding: 60px;
   background-color: #fff;
 }
 @media screen and (max-width: 940px) {
   .about-us {
-    padding: 30px 10px;
+    padding: 58px 10px;
   }
 }
 .about-us .text p {
@@ -634,7 +637,7 @@ footer .footer-copy .socila-link ul li a {
 }
 @media screen and (max-width: 940px) {
   .gallery {
-    padding: 30px 10px;
+    padding: 58px 10px;
   }
 }
 @media (min-width: 478px) {
