@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../constants.js";
 
 
 function Footer() {
@@ -25,8 +26,8 @@ function Footer() {
             return false;
         }
 
-        if (age && typeof age === 'number') {
-            if (age < 18) {
+        if (!isNaN(parseInt(age))) {
+            if (parseInt(age) < 18) {
                 setErrorMessage({ status: false, msg: 'Below 18 age are not allowed to donate blood.' });
                 return false;
             }
@@ -43,12 +44,13 @@ function Footer() {
             message: message
         }
 
-        let res = await axios.post("https://api.radhakishanjangidserver.shop/users", payload);
-        console.log(res, "res");
+        let res = await axios.post(`${BASE_URL}/users`, payload);
+
         if (res.status === 201) {
             setErrorMessage({ status: true, msg: "Your details submitted successfully." });
+            setName(""); setMobile(""); setAge(""); setSlots(""); setMessage("");
         } else {
-            setErrorMessage({ status: false, msg: "Your details submitted successfully." });
+            setErrorMessage({ status: false, msg: "Something went wrong." });
         }
     }
 
@@ -80,7 +82,7 @@ function Footer() {
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="detail">
-                                <p>Yash Kothari <br /><a href="tel:+919769403162">+91 9769403162</a></p>
+                                <p>Palak Deora <br /><a href="tel:+918850974092">+91 8850974092</a></p>
                             </div>
                         </div>
                     </div>
@@ -110,8 +112,8 @@ function Footer() {
                             }
                             <div class="form-body">
                                 <form onSubmit={(e) => handleSubmit(e)}>
-                                    <input type="text" onChange={(e) => setName(e.target.value)} defaultValue={name} required placeholder="Enter Name" class="form-control" />
-                                    <input type="number" minLength={10} maxLength={10} onChange={(e) => setMobile(e.target.value)} defaultValue={mobile} required placeholder="Enter Mobile no" class="form-control" />
+                                    <input type="text" onChange={(e) => setName(e.target.value)} value={name} required placeholder="Enter Name" class="form-control" />
+                                    <input type="number" minLength={10} maxLength={10} onChange={(e) => setMobile(e.target.value)} value={mobile} required placeholder="Enter Mobile no" class="form-control" />
                                     <select class="form-control" onChange={(e) => setSlots(e.target.value)} value={slots} >
                                         <option value="">Select your free slots</option>
                                         <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
@@ -121,8 +123,8 @@ function Footer() {
                                         <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
                                         <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
                                     </select>
-                                    <input type="number" minLength={2} maxLength={2} onChange={(e) => setAge(parseInt(e.target.value))} defaultValue={age} required placeholder="Enter your age" class="form-control" />
-                                    <textarea defaultValue={message} onChange={(e) => setMessage(e.target.value)} placeholder="Any important message or question you want to ask..." class="form-control" ></textarea>
+                                    <input type="number" minLength={2} maxLength={2} onChange={(e) => setAge(e.target.value)} value={age} required placeholder="Enter your age" class="form-control" />
+                                    <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Any important message or question you want to ask..." class="form-control" ></textarea>
                                     <button type="submit" class="btn btn-sm btn-primary w-100">Send Your Details</button>
                                 </form>
                             </div>

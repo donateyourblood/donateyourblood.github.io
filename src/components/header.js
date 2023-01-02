@@ -3,24 +3,6 @@ import React from "react";
 function Header() {
     return (
         <header className="continer-fluid ">
-            <div className="header-top">
-                <div className="container">
-                    <div className="row col-det">
-                        <div className="col-lg-6 d-none d-lg-block">
-                            <ul className="ulleft">
-                                <li>
-                                    <i className="far fa-envelope"></i>
-                                    sales@smarteyeapps.com
-                                    <span>|</span></li>
-                                <li>
-                                    <i className="far fa-clock"></i>
-                                    Service Time : 12:AM
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div id="menu-jk" className="header-bottom">
                 <div className="container">
                     <div className="row nav-row">

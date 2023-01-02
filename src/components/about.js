@@ -14,6 +14,7 @@ function About() {
                         <p><span className="red">Date - 22nd of January, 2023 </span></p>
                         <p><span className="red">Place - Old Raviraj Complex, Jesal Park, Bhayandar (East)</span></p>
                         <p><span className="red">Time - 10 AM - 5 PM  </span></p>
+                        <p><span className="red">Contact - <a href="tel:+918850974092" className="red">+91 8850974092</a>  </span></p>
                         <p></p>
                     </div>
                     <div class="col-md-6 image">

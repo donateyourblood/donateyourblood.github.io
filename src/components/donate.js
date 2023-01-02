@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../constants.js";
 
 function Donate() {
     const [name, setName] = useState("");
@@ -24,9 +25,12 @@ function Donate() {
             return false;
         }
 
-        if (age && typeof age === 'number') {
-            if (age < 18) {
+        if (!isNaN(parseInt(age))) {
+            if (parseInt(age) < 18) {
                 setErrorMessage({ status: false, msg: 'Below 18 age are not allowed to donate blood.' });
+                return false;
+            } else if (parseInt(age) > 60) {
+                setErrorMessage({ status: false, msg: 'Above 60 age are not allowed to donate blood.' });
                 return false;
             }
         } else {
@@ -42,12 +46,13 @@ function Donate() {
             message: message
         }
 
-        let res = await axios.post("https://api.radhakishanjangidserver.shop/users", payload);
-        
+        let res = await axios.post(`${BASE_URL}/users`, payload);
+
         if (res.status === 201) {
             setErrorMessage({ status: true, msg: "Your details submitted successfully." });
+            setName(""); setMobile(""); setAge(""); setSlots(""); setMessage("");
         } else {
-            setErrorMessage({ status: false, msg: "Your details submitted successfully." });
+            setErrorMessage({ status: false, msg: "Something went wrong." });
         }
     }
 
@@ -77,23 +82,19 @@ function Donate() {
                             }
                             <div class="form-body">
                                 <form onSubmit={(e) => handleSubmit(e)}>
-                                    <input type="text" onChange={(e) => setName(e.target.value)} defaultValue={name} required placeholder="Enter Name" class="form-control" />
-                                    <input type="text" minLength={10} maxLength={10} onChange={(e) => setMobile(e.target.value)} defaultValue={mobile} required placeholder="Enter Mobile no" class="form-control" />
+                                    <input type="text" onChange={(e) => setName(e.target.value)} value={name} required placeholder="Enter Name" class="form-control" />
+                                    <input type="text" minLength={10} maxLength={10} onChange={(e) => setMobile(e.target.value)} value={mobile} required placeholder="Enter Mobile no" class="form-control" />
                                     <select class="form-control" onChange={(e) => setSlots(e.target.value)} value={slots} >
                                         <option value="">Select your free slots</option>
                                         <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
                                         <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
                                         <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
-                                        <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
                                         <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
                                         <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
                                         <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
-                                        <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
-                                        <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
-                                        <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
                                     </select>
-                                    <input type="text" minLength={2} maxLength={2} onChange={(e) => setAge(parseInt(e.target.value))} defaultValue={age} required placeholder="Enter your age" class="form-control" />
-                                    <textarea defaultValue={message} onChange={(e) => setMessage(e.target.value)} placeholder="Any important message or question you want to ask..." class="form-control" ></textarea>
+                                    <input type="text" minLength={2} maxLength={2} onChange={(e) => setAge(e.target.value)} value={age} required placeholder="Enter your age" class="form-control" />
+                                    <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Any important message or question you want to ask..." class="form-control" ></textarea>
                                     <button type="submit" class="btn btn-sm btn-primary w-100">Send Your Details</button>
                                 </form>
                             </div>
