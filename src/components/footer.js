@@ -74,7 +74,7 @@ function Footer() {
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="detail">
-                                <p>Kashish Gupta <br /><a href="tel:+917045988319">+91 7045988319</a></p>
+                                <p>Lucky Pareekh <br /><a href="tel:+917045988319">+91 9324832860</a></p>
                             </div>
                         </div>
                         <div class="address-row">
@@ -82,7 +82,7 @@ function Footer() {
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="detail">
-                                <p>Palak Deora <br /><a href="tel:+918850974092">+91 8850974092</a></p>
+                                <p>Yash Kothari <br /><a href="tel:+918850974092">+91 9769403162</a></p>
                             </div>
                         </div>
                     </div>

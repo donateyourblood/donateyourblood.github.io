@@ -23,7 +23,14 @@ function UsersPage() {
         let res = await axios.get(`${BASE_URL}/users`);
 
         if (res.status === 200 && res?.data?.data) {
-            setTableData(res.data.data?.users);
+
+            let pending = res.data.data.users.filter((d) => d.status === 'pending');
+            let applicable = res.data.data.users.filter((d) => d.status === 'applicable');
+            let notapplicable = res.data.data.users.filter((d) => d.status === 'not applicable');
+
+            let final = [...pending, ...applicable, ...notapplicable]
+
+            setTableData(final);
         }
     }
 
@@ -106,6 +113,7 @@ function UsersPage() {
                                     <th>Sr. No.</th>
                                     <th>Details</th>
                                     <th>Slots</th>
+                                    <th>Status</th>
                                     <th>Message</th>
                                     <th>Actions</th>
                                 </tr>
@@ -124,6 +132,7 @@ function UsersPage() {
                                                         <p>Age: <span>{row.age}</span></p>
                                                     </td>
                                                     <td>{row.slots}</td>
+                                                    <td>{row.status}</td>
                                                     <td>{row.message}</td>
                                                     <td>
                                                         <div className="d-flex">

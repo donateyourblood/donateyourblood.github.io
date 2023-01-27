@@ -35,6 +35,9 @@ function Gallery() {
                     </div>
                     <div className="gg-box">
                         <div className="gg-element">
+                            <img src="assets/images/gallery/22-07.jpeg" alt="" />
+                        </div>
+                        <div className="gg-element">
                             <img src="assets/images/gallery/g8.jpeg" alt="" />
                         </div>
                         <div className="gg-element">

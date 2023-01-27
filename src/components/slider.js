@@ -30,7 +30,7 @@ function Slider() {
                             <h5 className=" bounceInDown">Donate Blood & Save a Life</h5>
                             <p className=" bounceInLeft">
                                 Blood donation drive in <span className="red"><strong>Old Raviraj Complex, Jesal Park</strong></span>  <br />
-                                in colloboration with Mahatma Gandhi Seva Mandir Blood Bank on the<br />
+                                in collaboration with Mahatma Gandhi Seva Mandir Blood Bank on the<br />
                                 <span className="red"><strong>22nd of Jan, 2023</strong></span> Do join us to CREATE A CHANGE by donating your blood
                             </p>
 
